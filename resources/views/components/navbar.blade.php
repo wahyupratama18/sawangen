@@ -18,7 +18,9 @@
                 <i class="mdi mdi-magnify absolute ml-3 pointer-events-none hidden peer-placeholder-shown:inline"></i>
             </form>
             
-            <small class="text-slate-700">UMKM Corner</small>
+            <a href="{{ route('landing.corner') }}">
+                <small class="text-slate-700">UMKM Corner</small>
+            </a>
         </div>
     </aside>
 

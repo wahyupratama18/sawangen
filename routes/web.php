@@ -18,6 +18,7 @@ Route::controller(LandingController::class)->name('landing.')->group(function ()
     Route::get('/', 'index')->name('welcome');
     Route::get('/search', 'search')->name('search');
     Route::get('/categories', 'categories')->name('categories');
+    Route::get('/umkm-corner', 'corner')->name('corner');
 });
 
 Route::middleware([

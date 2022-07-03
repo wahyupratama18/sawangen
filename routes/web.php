@@ -14,9 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::controller(LandingController::class)->group(function () {
+Route::controller(LandingController::class)->name('landing.')->group(function () {
     Route::get('/', 'index')->name('welcome');
     Route::get('/search', 'search')->name('search');
+    Route::get('/categories', 'categories')->name('categories');
 });
 
 Route::middleware([

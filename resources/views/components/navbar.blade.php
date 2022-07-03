@@ -1,19 +1,26 @@
 <nav class="fixed top-0 py-4 px-6 bg-gradient-to-br from-slate-100 to-slate-50 flex items-center justify-between w-full">
     <img src="{{ asset('contents/images/logo.png') }}" alt="">
 
-    <form action="{{ route('search') }}" class="hidden md:flex md:justify-center grow text-slate-100 focus-within:text-slate-50">
-        <div class="relative flex items-center w-[30rem]">
-            <x-jet-input
-            type="text"
-            name="search"
-            class="bg-sawangen/80 placeholder:text-slate-200 placeholder:pl-4 text-sm rounded-2xl peer w-full"
-            autocomplete="off"
-            aria-label="Cari layanan"
-            placeholder="Cari layanan..." />
-    
-            <i class="mdi mdi-magnify absolute ml-3 pointer-events-none hidden peer-placeholder-shown:inline"></i>
+    <aside class="hidden sm:flex sm:justify-center sm:items-center sm:gap-x-4 grow text-slate-100 focus-within:text-slate-50">
+
+        <a href="{{ route('landing.categories') }}" class="text-slate-700 text-sm">Kategori</a>
+        <div>
+            {{-- Search --}}
+            <form action="{{ route('landing.search') }}" class="relative flex items-center md:w-[17.5rem] lg:w-[30rem]">
+                <x-jet-input
+                type="text"
+                name="search"
+                class="bg-sawangen/80 placeholder:text-slate-200 placeholder:pl-4 text-sm rounded-2xl peer w-full"
+                autocomplete="off"
+                aria-label="Cari layanan"
+                placeholder="Cari layanan..." />
+        
+                <i class="mdi mdi-magnify absolute ml-3 pointer-events-none hidden peer-placeholder-shown:inline"></i>
+            </form>
+            
+            <small class="text-slate-700">UMKM Corner</small>
         </div>
-    </form>
+    </aside>
 
     <div class="hidden sm:flex sm:items-center sm:gap-x-4 sm:ml-6">
         @auth

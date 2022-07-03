@@ -18,7 +18,7 @@
         <div class="font-sans bg-slate-50 text-gray-900 antialiased">
             <x-navbar />
 
-            <main class="mt-20">
+            <main class="mt-28">
                 {{ $slot }}
             </main>
         </div>

@@ -11,6 +11,9 @@ module.exports = {
 
     theme: {
         extend: {
+            colors: {
+                sawangen: '#5943ED',
+            },
             fontFamily: {
                 sans: ['Inter', 'Nunito', ...defaultTheme.fontFamily.sans],
             },

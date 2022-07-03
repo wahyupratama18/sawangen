@@ -1,5 +1,5 @@
 <nav class="fixed top-0 py-4 px-6 bg-gradient-to-br from-slate-100 to-slate-50 flex items-center justify-between w-full">
-    <img src="{{ asset('contents/images/logo.png') }}" alt="">
+    <img src="{{ asset('contents/images/logo.png') }}" alt="Sawangen Logo">
 
     <aside class="hidden sm:flex sm:justify-center sm:items-center sm:gap-x-4 grow text-slate-100 focus-within:text-slate-50">
 

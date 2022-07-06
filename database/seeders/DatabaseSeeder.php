@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::factory(1)->administrator()->create();
+
+        $this->call(IndoRegionSeeder::class);
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([

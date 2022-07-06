@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\{HasOne};
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use JoelButcher\Socialstream\HasConnectedAccounts;
+use JoelButcher\Socialstream\SetsProfilePhotoFromUrl;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
@@ -16,9 +18,13 @@ class User extends Authenticatable
 {
     use HasApiTokens;
     use HasFactory;
-    use HasProfilePhoto;
+    use HasProfilePhoto {
+        getProfilePhotoUrlAttribute as getPhotoUrl;
+    }
     // use MustVerifyEmail;
+    use HasConnectedAccounts;
     use Notifiable;
+    use SetsProfilePhotoFromUrl;
     use TwoFactorAuthenticatable;
 
     /**
@@ -83,5 +89,19 @@ class User extends Authenticatable
     public function store(): HasOne
     {
         return $this->hasOne(Store::class);
+    }
+
+    /**
+     * Get the URL to the user's profile photo.
+     *
+     * @return string
+     */
+    public function profilePhotoUrl(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => filter_var($this->profile_photo_path, FILTER_VALIDATE_URL)
+            ? $this->profile_photo_path
+            : $this->getPhotoUrl()
+        );
     }
 }

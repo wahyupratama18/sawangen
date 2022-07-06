@@ -3,7 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\{HasOne};
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -15,6 +17,7 @@ class User extends Authenticatable
     use HasApiTokens;
     use HasFactory;
     use HasProfilePhoto;
+    // use MustVerifyEmail;
     use Notifiable;
     use TwoFactorAuthenticatable;
 
@@ -57,5 +60,28 @@ class User extends Authenticatable
      */
     protected $appends = [
         'profile_photo_url',
+        'an_admin'
     ];
+
+    /**
+     * Make sure the user is an admin or not
+     *
+     * @return Attribute
+     */
+    public function anAdmin(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => $this->role === 1
+        );
+    }
+
+    /**
+     * Get the store associated with the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function store(): HasOne
+    {
+        return $this->hasOne(Store::class);
+    }
 }

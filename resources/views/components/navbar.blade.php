@@ -1,9 +1,20 @@
-<nav class="fixed top-0 py-4 px-6 bg-gradient-to-br from-slate-100 to-slate-50 flex items-center justify-between w-full">
-    <img src="{{ asset('contents/images/logo.png') }}" alt="Sawangen Logo">
+<nav class="fixed top-0 py-3 px-6 bg-gradient-to-br from-slate-100 to-slate-50 flex items-center justify-between w-full rounded-br-[2rem] border-b-4 border-b-sawangen h-20 z-20">
 
+    <div class="flex justify-between md:w-48">
+        <a href="{{ route('landing.welcome') }}" class="grow flex justify-center mr-4">
+            <img src="{{ asset('contents/images/logo.png') }}" alt="Sawangen Logo">
+        </a>
+
+        @can('adminOrStoreOnly', Auth::user())
+        <i @click="open = !open" class="mdi mdi-sort-variant mdi-24px cursor-pointer"></i>
+        @endcan
+    </div>
+
+    @cannot('isAnAdministrator', Auth::user())
     <aside class="hidden sm:flex sm:justify-center sm:items-center sm:gap-x-4 grow text-slate-100 focus-within:text-slate-50">
 
         <a href="{{ route('landing.categories') }}" class="text-slate-700 text-sm">Kategori</a>
+
         <div>
             {{-- Search --}}
             <form action="{{ route('landing.search') }}" class="relative flex items-center md:w-[17.5rem] lg:w-[30rem]">
@@ -19,12 +30,13 @@
             </form>
             
             <a href="{{ route('landing.corner') }}">
-                <small class="text-slate-700">UMKM Corner</small>
+                <small class="text-sawangen hover:font-semibold">UMKM Corner</small>
             </a>
         </div>
     </aside>
+    @endcannot
 
-    <div class="hidden sm:flex sm:items-center sm:gap-x-4 sm:ml-6">
+    <div class="flex items-center gap-x-4 ml-6">
         @auth
             <!-- Teams Dropdown -->
             @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
@@ -77,16 +89,20 @@
             @endif
 
             <!-- Settings Dropdown -->
-            <div class="relative">
+            <div class="ml-3 relative">
                 <x-jet-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-                            <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
+                            <button class="flex items-center gap-x-2 text-sm border-2 border-transparent rounded-full focus:outline-none transition">
                                 <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                                <span class="hidden sm:inline">
+                                    {{ Auth::user()->name }}
+                                </span>
+                                <i class="mdi mdi-chevron-down"></i>
                             </button>
                         @else
                             <span class="inline-flex rounded-md">
-                                <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition">
+                                <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none transition">
                                     {{ Auth::user()->name }}
 
                                     <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -100,16 +116,16 @@
                     <x-slot name="content">
                         <!-- Account Management -->
                         <div class="block px-4 py-2 text-xs text-gray-400">
-                            {{ __('Manage Account') }}
+                            {{ __('Atur Akun') }}
                         </div>
 
                         <x-jet-dropdown-link href="{{ route('profile.show') }}">
-                            {{ __('Profile') }}
+                            {{ __('Pengaturan Profil') }}
                         </x-jet-dropdown-link>
 
                         @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                             <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
-                                {{ __('API Tokens') }}
+                                {{ __('Token API Token') }}
                             </x-jet-dropdown-link>
                         @endif
 
@@ -120,8 +136,20 @@
                             @csrf
 
                             <x-jet-dropdown-link href="{{ route('logout') }}"
-                                    @click.prevent="$root.submit();">
-                                {{ __('Log Out') }}
+                                @click.prevent="
+                                Swal.fire({
+                                    confirmButtonText: 'Keluar',
+                                    cancelButtonText: 'Kembali',
+                                    reverseButtons: true,
+                                    showCancelButton: true,
+                                    title: 'Apakah anda yakin ingin keluar?',
+                                }).then(val => {
+                                    if (val.value) {
+                                        $root.submit()
+                                    }
+                                })
+                                ">
+                                {{ __('Keluar') }}
                             </x-jet-dropdown-link>
                         </form>
                     </x-slot>
@@ -138,14 +166,34 @@
             </a>
         @endauth
     </div>
-
-    <!-- Hamburger -->
-    <div class="-mr-2 flex items-center sm:hidden">
-        <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition">
-            <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-        </button>
-    </div>
 </nav>
+
+
+<!-- Backdrop -->
+<div x-show="open" x-transition:enter="transition ease-in-out duration-150" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in-out duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="fixed inset-0 z-10 flex items-end bg-black bg-opacity-50 sm:items-center sm:justify-center"></div>
+
+{{-- Aside --}}
+<aside x-show="open" x-transition:enter="transition-all ease-in-out duration-1000" x-transition:enter-start="transform -translate-x-full" x-transition:enter-end="transform transform-x-0" x-transition:leave="transition-all ease-in-out duration-1000" x-transition:leave-start="transform transform-x-0" x-transition:leave-end="transform -translate-x-full" @click.away="open = false" @keydown.escape="open = false" class="bg-slate-200 fixed top-20 bottom-0 w-64 overflow-y-auto z-20">
+    <!-- Responsive Settings Options -->
+    <div class="pt-4 pb-1 space-y-1">
+
+        <x-dropdown icon="home-outline" title="Beranda" :href="route('dashboard')" />
+
+        @can('isAnAdministrator', Auth::user())
+        <x-dropdown icon="archive-outline" title="Daftar Kategori" :href="route('admin.categories.index')" />
+        @endcan
+
+        {{-- <x-dropdown icon="speedometer" title="Data Master" :subs="[
+            (object) ['link' => route('alternatives.index'), 'icon' => 'circle', 'title' => 'Data Alternatif'],
+            (object) ['link' => route('criterias.index'), 'icon' => 'circle', 'title' => 'Data Kriteria'],
+            (object) ['link' => route('crisps.index'), 'icon' => 'circle', 'title' => 'Data Crisps'],
+        ]" />
+        @endcan
+        
+
+        <x-dropdown icon="book" title="Perhitungan" :href="route('report.index')" />
+
+        <x-dropdown icon="cog" title="Pengaturan" :href="route('users.index')" /> --}}
+        
+    </div>
+</aside>

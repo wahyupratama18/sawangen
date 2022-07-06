@@ -17,11 +17,12 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased" x-data="{open: false}">
         <x-jet-banner />
 
-        <div class="min-h-screen bg-gray-100">
-            @livewire('navigation-menu')
+        <x-navbar />
+
+        <div class="min-h-screen bg-slate-50 bg-pattern bg-repeat-x bg-bottom bg-contain mt-20">
 
             <!-- Page Heading -->
             @if (isset($header))

@@ -35,6 +35,11 @@ class RouteServiceProvider extends ServiceProvider
 
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
+
+            Route::middleware($this->collectedAuthMiddleware(['role:1']))
+                ->prefix('manage')
+                ->name('admin.')
+                ->group(base_path('routes/admin.php'));
         });
     }
 
@@ -48,5 +53,21 @@ class RouteServiceProvider extends ServiceProvider
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
+    }
+
+    /**
+     * Collecting to one middleware
+     *
+     * @param array $middleware
+     * @return array
+     */
+    protected function collectedAuthMiddleware(array $middleware = []): array
+    {
+        return array_merge([
+            'web',
+            'auth:sanctum',
+            config('jetstream.auth_session'),
+            'verified'
+        ], $middleware);
     }
 }

@@ -24,9 +24,11 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(): View
     {
-        //
+        return view('admin.categories.create', [
+            'categories' => Category::query()->get(['id', 'name'])
+        ]);
     }
 
     /**

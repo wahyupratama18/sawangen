@@ -1,9 +1,15 @@
-<div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
-    <div>
-        {{ $logo }}
-    </div>
+<div class="inline md:grid md:grid-cols-2 min-h-screen [&_aside]:p-16">
+    <aside class="hidden md:flex md:items-center md:justify-center bg-sawangen">
+        {{-- image --}}
+    </aside>
 
-    <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
-        {{ $slot }}
-    </div>
+    <aside class="flex items-center justify-center bg-white min-h-screen">
+        <div class="w-full">
+            <div class="flex items-center justify-center mb-4">
+                {{ $logo }}
+            </div>
+
+            {{ $slot }}
+        </div>
+    </aside>
 </div>

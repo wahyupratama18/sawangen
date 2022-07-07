@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-guest-layout title="Daftar">
     <x-jet-authentication-card>
         <x-slot name="logo">
             <x-jet-authentication-card-logo />
@@ -10,22 +10,22 @@
             @csrf
 
             <div>
-                <x-jet-label for="name" value="{{ __('forms.name') }}" />
+                <x-jet-label class="text-sawangen" for="name" value="{{ __('forms.name') }}" />
                 <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="email" value="{{ __('forms.email') }}" />
+                <x-jet-label class="text-sawangen" for="email" value="{{ __('forms.email') }}" />
                 <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('forms.password') }}" />
+                <x-jet-label class="text-sawangen" for="password" value="{{ __('forms.password') }}" />
                 <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="password_confirmation" value="{{ __('forms.password_confirm') }}" />
+                <x-jet-label class="text-sawangen" for="password_confirmation" value="{{ __('forms.password_confirm') }}" />
                 <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
 
@@ -37,8 +37,8 @@
 
                             <div class="ml-2">
                                 {!! __('forms.agreement.text', [
-                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('forms.agreement.terms').'</a>',
-                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('forms.agreement.privacy').'</a>',
+                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-sawangen hover:text-sawangen/90">'.__('forms.agreement.terms').'</a>',
+                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-sawangen hover:text-sawangen/90">'.__('forms.agreement.privacy').'</a>',
                                 ]) !!}
                             </div>
                         </div>
@@ -46,19 +46,23 @@
                 </div>
             @endif
 
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('forms.registered') }}
-                </a>
 
-                <x-jet-button class="ml-4">
-                    {{ __('forms.register') }}
-                </x-jet-button>
-            </div>
+            <x-jet-button class="w-full justify-center mt-4 rounded-lg">
+                {{ __('forms.register') }}
+            </x-jet-button>
+
         </form>
-
+        
         @if (JoelButcher\Socialstream\Socialstream::show())
-            <x-socialstream-providers />
+        <x-socialstream-providers action="register" />
         @endif
+
+        <p class="text-center mt-4">
+            {{ __('forms.registered') }}
+
+            <a class="text-sawangen hover:text-sawangen/90" href="{{ route('login') }}">
+                {{ __('forms.login') }}
+            </a>
+        </p>
     </x-jet-authentication-card>
 </x-guest-layout>

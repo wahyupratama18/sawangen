@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\{Component, View};
 
-class GuestLayout extends Component
+class BaseLayout extends Component
 {
     /**
      * Create a new component instance.
@@ -13,16 +13,18 @@ class GuestLayout extends Component
      */
     public function __construct(public string $title = "")
     {
-        // 
+        if ($this->title) {
+            $this->title .= ' - ';
+        }
     }
-    
+
     /**
-     * Get the view / contents that represents the component.
+     * Get the view / contents that represent the component.
      *
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Contracts\View\View|\Closure|string
      */
     public function render(): View
     {
-        return view('layouts.guest');
+        return view('layouts.base');
     }
 }

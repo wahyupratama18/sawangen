@@ -36,5 +36,8 @@ return [
         'privacy' => 'Privacy Policy'
     ],
     'registered' => 'Already registered?',
-    'register' => 'Register'
+    'noaccount' => 'Didn\'t have any account?',
+    'register' => 'Register',
+    'login' => 'Log in',
+    'oauth' => ':Action dengan akun :social',
 ];

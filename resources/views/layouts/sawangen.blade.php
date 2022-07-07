@@ -1,26 +1,7 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<x-base-layout :title="$title">
+    <x-navbar />
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/6.6.96/css/materialdesignicons.min.css">
-
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body>
-        <div class="font-sans bg-slate-50 text-gray-900 antialiased" x-data="{open: false}">
-            <x-navbar />
-
-            <main class="mt-28">
-                {{ $slot }}
-            </main>
-        </div>
-    </body>
-</html>
+    <main class="mt-28">
+        {{ $slot }}
+    </main>
+</x-base-layout>

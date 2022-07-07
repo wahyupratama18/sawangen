@@ -36,5 +36,8 @@ return [
         'privacy' => 'Kebijakan Privasi'
     ],
     'registered' => 'Telah terdaftar?',
-    'register' => 'Daftar'
+    'noaccount' => 'Belum memiliki akun?',
+    'register' => 'Daftar',
+    'login' => 'Masuk',
+    'oauth' => ':Action dengan akun :social',
 ];

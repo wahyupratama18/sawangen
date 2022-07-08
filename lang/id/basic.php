@@ -13,9 +13,9 @@ return [
     |
     */
 
-    'create'   => 'Buat baru',
-    'edit'   => 'Perbarui',
-    'Save'   => 'Simpan',
+    'create' => 'Buat baru',
+    'edit' => 'Perbarui',
+    'Save' => 'Simpan',
     'Saved.' => 'Tersimpan.',
-    'back'  => 'Kembali'
+    'back' => 'Kembali',
 ];

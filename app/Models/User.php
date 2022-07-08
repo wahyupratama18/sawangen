@@ -21,6 +21,7 @@ class User extends Authenticatable
     use HasProfilePhoto {
         getProfilePhotoUrlAttribute as getPhotoUrl;
     }
+
     // use MustVerifyEmail;
     use HasConnectedAccounts;
     use Notifiable;
@@ -66,7 +67,7 @@ class User extends Authenticatable
      */
     protected $appends = [
         'profile_photo_url',
-        'an_admin'
+        'an_admin',
     ];
 
     /**
@@ -77,7 +78,7 @@ class User extends Authenticatable
     public function anAdmin(): Attribute
     {
         return Attribute::make(
-            get: fn() => $this->role === 1
+            get: fn () => $this->role === 1
         );
     }
 
@@ -99,7 +100,7 @@ class User extends Authenticatable
     public function profilePhotoUrl(): Attribute
     {
         return Attribute::make(
-            get: fn() => filter_var($this->profile_photo_path, FILTER_VALIDATE_URL)
+            get: fn () => filter_var($this->profile_photo_path, FILTER_VALIDATE_URL)
             ? $this->profile_photo_path
             : $this->getPhotoUrl()
         );

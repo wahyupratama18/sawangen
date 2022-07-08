@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreCategoryRequest;
+use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Category;
-use App\Http\Requests\{StoreCategoryRequest, UpdateCategoryRequest};
 use Illuminate\View\View;
 
 class CategoryController extends Controller
@@ -27,7 +28,10 @@ class CategoryController extends Controller
     public function create(): View
     {
         return view('admin.categories.create', [
-            'categories' => Category::query()->get(['id', 'name'])
+            'categories' => Category::query()->get([
+                'id',
+                'name',
+            ]),
         ]);
     }
 

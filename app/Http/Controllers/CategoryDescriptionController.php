@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CategoryDescription;
 use App\Http\Requests\StoreCategoryDescriptionRequest;
 use App\Http\Requests\UpdateCategoryDescriptionRequest;
+use App\Models\CategoryDescription;
 
 class CategoryDescriptionController extends Controller
 {

@@ -58,7 +58,7 @@ class RouteServiceProvider extends ServiceProvider
     /**
      * Collecting to one middleware
      *
-     * @param array $middleware
+     * @param  array  $middleware
      * @return array
      */
     protected function collectedAuthMiddleware(array $middleware = []): array
@@ -67,7 +67,7 @@ class RouteServiceProvider extends ServiceProvider
             'web',
             'auth:sanctum',
             config('jetstream.auth_session'),
-            'verified'
+            'verified',
         ], $middleware);
     }
 }

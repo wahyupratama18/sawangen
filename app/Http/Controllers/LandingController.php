@@ -7,7 +7,6 @@ use Illuminate\View\View;
 
 class LandingController extends Controller
 {
-
     /**
      * Display main landing page
      *
@@ -21,7 +20,7 @@ class LandingController extends Controller
     /**
      * Display search box
      *
-     * @param Request $request
+     * @param  Request  $request
      * @return View
      */
     public function search(Request $request): View

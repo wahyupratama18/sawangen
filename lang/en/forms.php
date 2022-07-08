@@ -16,11 +16,11 @@ return [
     'categories' => [
         'create' => [
             'title' => 'Create category',
-            'description' => 'Add new product category.'
+            'description' => 'Add new product category.',
         ],
         'edit' => [
             'title' => 'Edit category',
-            'description' => 'Edit current product category.'
+            'description' => 'Edit current product category.',
         ],
     ],
     'name' => 'Name',
@@ -33,7 +33,7 @@ return [
     'agreement' => [
         'text' => 'I agree to the :terms_of_service and :privacy_policy',
         'terms' => 'Terms of Service',
-        'privacy' => 'Privacy Policy'
+        'privacy' => 'Privacy Policy',
     ],
     'registered' => 'Already registered?',
     'noaccount' => 'Didn\'t have any account?',

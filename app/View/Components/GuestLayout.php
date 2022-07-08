@@ -2,7 +2,8 @@
 
 namespace App\View\Components;
 
-use Illuminate\View\{Component, View};
+use Illuminate\View\Component;
+use Illuminate\View\View;
 
 class GuestLayout extends Component
 {
@@ -11,11 +12,11 @@ class GuestLayout extends Component
      *
      * @return void
      */
-    public function __construct(public string $title = "")
+    public function __construct(public string $title = '')
     {
-        // 
+        //
     }
-    
+
     /**
      * Get the view / contents that represents the component.
      *

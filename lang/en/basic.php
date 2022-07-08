@@ -13,9 +13,9 @@ return [
     |
     */
 
-    'create'   => 'Create baru',
-    'edit'   => 'Edit',
-    'Save'   => 'Save',
+    'create' => 'Create new',
+    'edit' => 'Edit',
+    'Save' => 'Save',
     'Saved.' => 'Saved.',
-    'back'  => 'Back'
+    'back' => 'Back',
 ];

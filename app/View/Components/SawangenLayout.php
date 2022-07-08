@@ -2,7 +2,8 @@
 
 namespace App\View\Components;
 
-use Illuminate\View\{Component, View};
+use Illuminate\View\Component;
+use Illuminate\View\View;
 
 class SawangenLayout extends Component
 {
@@ -11,9 +12,9 @@ class SawangenLayout extends Component
      *
      * @return void
      */
-    public function __construct(public string $title = "")
+    public function __construct(public string $title = '')
     {
-        // 
+        //
     }
 
     /**

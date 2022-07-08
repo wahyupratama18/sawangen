@@ -11,7 +11,8 @@ namespace App\Models;
 
 use AzisHapidin\IndoRegion\Traits\DistrictTrait;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\{BelongsTo, HasMany};
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * District Model.
@@ -26,7 +27,7 @@ class District extends Model
      * @var array
      */
     protected $hidden = [
-        'regency_id'
+        'regency_id',
     ];
 
     /**

@@ -26,7 +26,7 @@ class Village extends Model
      * @var array
      */
     protected $hidden = [
-        'district_id'
+        'district_id',
     ];
 
     /**

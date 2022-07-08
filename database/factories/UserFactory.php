@@ -53,7 +53,7 @@ class UserFactory extends Factory
     public function administrator(): static
     {
         return $this->state(fn (array $attributes) => [
-            'role' => 1
+            'role' => 1,
         ]);
     }
 
@@ -73,7 +73,7 @@ class UserFactory extends Factory
                 ->state(fn (array $attributes, User $user) => [
                     'name' => $user->name.'\'s Team',
                     'user_id' => $user->id,
-                    'personal_team' => true
+                    'personal_team' => true,
                 ]),
             'ownedTeams'
         );

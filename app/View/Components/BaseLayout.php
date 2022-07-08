@@ -2,7 +2,8 @@
 
 namespace App\View\Components;
 
-use Illuminate\View\{Component, View};
+use Illuminate\View\Component;
+use Illuminate\View\View;
 
 class BaseLayout extends Component
 {
@@ -11,7 +12,7 @@ class BaseLayout extends Component
      *
      * @return void
      */
-    public function __construct(public string $title = "")
+    public function __construct(public string $title = '')
     {
         if ($this->title) {
             $this->title .= ' - ';

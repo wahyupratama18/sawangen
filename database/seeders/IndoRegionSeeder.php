@@ -24,7 +24,7 @@ class IndoRegionSeeder extends Seeder
             IndoRegionProvinceSeeder::class,
             IndoRegionRegencySeeder::class,
             IndoRegionDistrictSeeder::class,
-            IndoRegionVillageSeeder::class
+            IndoRegionVillageSeeder::class,
         ]);
     }
 }

@@ -12,8 +12,8 @@ class UserPolicy
     /**
      * Make sure the user is an administrator
      *
-     * @param User $user
-     * @return boolean
+     * @param  User  $user
+     * @return bool
      */
     public function isAnAdministrator(User $user): bool
     {
@@ -23,14 +23,20 @@ class UserPolicy
     /**
      * Make sure this user has a store
      *
-     * @param User $user
-     * @return boolean
+     * @param  User  $user
+     * @return bool
      */
     public function haveAStore(User $user): bool
     {
-        return !empty($user->store);
+        return ! empty($user->store);
     }
 
+    /**
+     * Determine the user is an administrator or regular user that having a store
+     *
+     * @param  User  $user
+     * @return bool
+     */
     public function adminOrStoreOnly(User $user): bool
     {
         return $this->isAnAdministrator($user) || $this->haveAStore($user);

@@ -16,11 +16,11 @@ return [
     'categories' => [
         'create' => [
             'title' => 'Buat kategori',
-            'description' => 'Tambah kategori produk.'
+            'description' => 'Tambah kategori produk.',
         ],
         'edit' => [
             'title' => 'Ubah kategori',
-            'description' => 'Ganti kategori produk.'
+            'description' => 'Ganti kategori produk.',
         ],
     ],
     'name' => 'Nama',
@@ -33,7 +33,7 @@ return [
     'agreement' => [
         'text' => 'Saya menyetujui :terms_of_service dan :privacy_policy yang ditetapkan',
         'terms' => 'Ketentuan Penggunaan',
-        'privacy' => 'Kebijakan Privasi'
+        'privacy' => 'Kebijakan Privasi',
     ],
     'registered' => 'Telah terdaftar?',
     'noaccount' => 'Belum memiliki akun?',

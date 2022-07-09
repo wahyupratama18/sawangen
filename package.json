@@ -17,7 +17,9 @@
         "vite": "^2.9.11"
     },
     "dependencies": {
+        "gridjs": "^5.0.2",
         "izitoast": "^1.4.0",
-        "sweetalert2": "^11.4.20"
+        "sweetalert2": "^11.4.20",
+        "tom-select": "^2.1.0"
     }
 }

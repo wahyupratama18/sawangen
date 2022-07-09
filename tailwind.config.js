@@ -11,6 +11,9 @@ module.exports = {
 
     theme: {
         extend: {
+            backgroundImage: {
+                identity: "url('/contents/images/batik.jpg')"
+            },
             colors: {
                 sawangen: '#5943ED',
             },

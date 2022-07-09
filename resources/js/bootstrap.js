@@ -38,3 +38,9 @@ window.iziToast = iziToast;
 //     forceTLS: (import.meta.env.VITE_PUSHER_SCHEME ?? 'https') === 'https',
 //     enabledTransports: ['ws', 'wss'],
 // });
+
+import TomSelect from 'tom-select';
+window.TomSelect = TomSelect;
+
+import { Grid } from 'gridjs';
+window.Grid = Grid;

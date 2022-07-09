@@ -6,27 +6,40 @@
             {{ __('basic.back') }}
         </a>
 
-        <x-jet-action-section class="mt-3">
-            <x-slot name="title">
+        <x-jet-normal-form :method="'POST'" :action="route('admin.categories.store')" class="mt-3">
+            <x-slot:title>
                 {{ __('forms.categories.create.title') }}
             </x-slot>
         
-            <x-slot name="description">
+            <x-slot:description>
                 {{ __('forms.categories.create.description') }}
             </x-slot>
         
-            <x-slot name="content">
-                {{-- <div class="max-w-xl text-sm text-gray-600">
-                    {{ __('Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.') }}
+            <x-slot:form>
+                <div class="col-span-6 sm:col-span-4">
+                    <x-jet-label for="name" value="{{ __('forms.name') }}" />
+                    <x-jet-input id="name" type="text" class="mt-1 block w-full" name="name" />
+                    <x-jet-input-error for="name" class="mt-2" />
                 </div>
-        
-                <div class="mt-5">
-                    <x-jet-danger-button wire:click="confirmUserDeletion" wire:loading.attr="disabled">
-                        {{ __('Delete Account') }}
-                    </x-jet-danger-button>
-                </div> --}}
+                
+                <div class="col-span-6 sm:col-span-4">
+                    <x-jet-label for="category_id" value="{{ __('Subkategori') }}" />
+                    <x-select id="category_id" class="mt-1 block w-full" name="category_id" placeholder="Pilih kategori (opsional)">
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </x-select>
+                    <x-jet-input-error for="category_id" class="mt-2" />
+                </div>
+
             </x-slot>
-        </x-jet-action-section>
+
+            <x-slot:actions>
+                <x-jet-button>
+                    {{ __('basic.Save') }}
+                </x-jet-button>
+            </x-slot>
+        </x-jet-normal-form>
 
     </div>
 </x-app-layout>

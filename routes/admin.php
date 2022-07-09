@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Api\CategoryController as ApiCategoryController;
 use App\Http\Controllers\Admin\{
     CategoryController
 };
@@ -17,3 +18,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::resource('categories', CategoryController::class);
+
+Route::prefix('api')->name('api.')->group(function () {
+    Route::apiResources([
+        'categories' => ApiCategoryController::class,
+    ]);
+    // Route::get('category', [CategoryController::class, 'api'])->name('category');
+});

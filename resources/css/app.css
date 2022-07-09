@@ -1,4 +1,11 @@
 @import 'iziToast/dist/css/iziToast';
+@import 'tom-select/dist/css/tom-select.min';
+@import 'gridjs/dist/theme/mermaid.min';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.gridjs-table {
+    @apply w-full;
+}

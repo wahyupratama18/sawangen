@@ -2,7 +2,7 @@
 
     <div class="flex justify-between md:w-48">
         <a href="{{ route('landing.welcome') }}" class="grow flex justify-center mr-4">
-            <img src="{{ asset('contents/images/logo.png') }}" alt="Sawangen Logo">
+            <img src="{{ asset('contents/images/logo.png') }}" alt="Sawangen Logo" class="h-8">
         </a>
 
         @can('adminOrStoreOnly', Auth::user())

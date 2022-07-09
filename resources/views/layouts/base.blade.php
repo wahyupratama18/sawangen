@@ -10,6 +10,7 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/6.6.96/css/materialdesignicons.min.css">
+        <link rel="shortcut icon" href="{{ asset('contents/images/sm.png') }}" type="image/x-icon">
 
         <!-- Styles -->
         @livewireStyles

@@ -1,9 +1,10 @@
 <x-base-layout :title="$title">
-    <x-jet-banner />
-
+    
     <x-navbar />
+    
+    <div class="min-h-screen bg-slate-50 bg-identity bg-repeat bg-bottom bg-contain mt-20">
 
-    <div class="min-h-screen bg-slate-50 bg-pattern bg-repeat-x bg-bottom bg-contain mt-20">
+        <x-jet-banner />
 
         <!-- Page Heading -->
         @if (isset($header))
@@ -15,7 +16,7 @@
         @endif
 
         <!-- Page Content -->
-        <main>
+        <main class="px-8 py-6">
             {{ $slot }}
         </main>
     </div>

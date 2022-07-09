@@ -43,7 +43,13 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        //
+        Category::query()->create($request->validated());
+
+        return redirect()->route('admin.categories.index')
+        ->with([
+            'status' => true,
+            'message' => 'Data berhasil tersimpan',
+        ]);
     }
 
     /**

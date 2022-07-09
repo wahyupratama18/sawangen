@@ -29,7 +29,10 @@
             server: {
                 url: '{{ route('admin.api.categories.index') }}',
                 then: data => data.data.map(category => [
-                    category.name, category.parent, ''
+                    category.name,
+                    category.parent,
+                    ''
+                    {{-- html(`<a href='${category.show}'>Lihat</a><br><a href='${category.show}/edit'>Edit</a>`), --}}
                 ]),
                 total: data => data.meta.total
             }

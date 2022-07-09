@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Category;
+use App\Services\CategoryService;
 use Illuminate\View\View;
 
 class CategoryController extends Controller
@@ -43,12 +44,12 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        Category::query()->create($request->validated());
+        CategoryService::store($request);
 
         return redirect()->route('admin.categories.index')
         ->with([
             'status' => true,
-            'message' => 'Data berhasil tersimpan',
+            'message' => 'Data berhasil tersimpan.',
         ]);
     }
 
@@ -71,7 +72,13 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('admin.categories.edit', [
+            'category' => $category,
+            'categories' => Category::query()->get([
+                'id',
+                'name',
+            ]),
+        ]);
     }
 
     /**
@@ -83,7 +90,13 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+        CategoryService::update($request, $category);
+
+        return redirect()->route('admin.categories.index')
+        ->with([
+            'status' => true,
+            'message' => 'Data berhasil diperbarui.'
+        ]);
     }
 
     /**
@@ -94,6 +107,12 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        CategoryService::destroy($category);
+
+        return redirect()->route('admin.categories.index')
+        ->with([
+            'status' => true,
+            'message' => 'Data berhasil terhapus.'
+        ]);
     }
 }

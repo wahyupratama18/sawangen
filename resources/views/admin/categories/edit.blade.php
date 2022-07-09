@@ -18,7 +18,7 @@
             <x-slot:form>
                 <div class="col-span-6 sm:col-span-4">
                     <x-jet-label for="name" value="{{ __('forms.name') }}" />
-                    <x-jet-input id="name" type="text" class="mt-1 block w-full" name="name" :value="old('name')" />
+                    <x-jet-input id="name" type="text" class="mt-1 block w-full" name="name" :value="old('name', $category->name)" />
                     <x-jet-input-error for="name" class="mt-2" />
                 </div>
                 
@@ -26,7 +26,7 @@
                     <x-jet-label for="category_id" value="{{ __('Subkategori') }}" />
                     <x-select id="category_id" class="mt-1 block w-full" name="category_id" placeholder="Pilih kategori (opsional)">
                         @foreach ($categories as $category)
-                            <option value="{{ $category->id }}" @selected( old('category_id') === $category->id )>{{ $category->name }}</option>
+                            <option value="{{ $category->id }}" @selected( old('category_id', $category->category_id) === $category->id )>{{ $category->name }}</option>
                         @endforeach
                     </x-select>
                     <x-jet-input-error for="category_id" class="mt-2" />

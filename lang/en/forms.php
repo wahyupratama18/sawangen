@@ -22,6 +22,13 @@ return [
             'title' => 'Edit category',
             'description' => 'Edit current product category.',
         ],
+        'show' => [
+            'title' => 'Show category',
+            'description' => 'Show current product category.',
+        ],
+        'index' => [
+            'title' => 'Category lists',
+        ],
         'parent' => 'Parent Category',
     ],
     'name' => 'Name',

@@ -1,4 +1,4 @@
-<x-app-layout title="Daftar Kategori">
+<x-app-layout :title="__('forms.categories.index.title')">
     <div class="flex justify-end mb-3">
         <a href="{{ route('admin.categories.create') }}">
             <x-jet-button>

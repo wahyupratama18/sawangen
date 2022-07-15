@@ -29,7 +29,7 @@ class UpdateCategoryRequest extends FormRequest
             'name' => ['required', 'string'],
             'category_id' => [
                 'nullable',
-                Rule::exists(Category::class, 'id')->whereNot('id', $this->category),
+                Rule::exists(Category::class, 'id')->whereNot('id', $this->category->id),
             ],
         ];
     }

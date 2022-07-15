@@ -22,6 +22,13 @@ return [
             'title' => 'Ubah kategori',
             'description' => 'Ganti kategori produk.',
         ],
+        'show' => [
+            'title' => 'Lihat kategori',
+            'description' => 'Detail kategori produk.',
+        ],
+        'index' => [
+            'title' => 'Daftar Kategori',
+        ],
         'parent' => 'Induk Kategori',
     ],
     'name' => 'Nama',

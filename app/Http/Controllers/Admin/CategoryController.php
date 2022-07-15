@@ -59,9 +59,11 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Category $category): View
     {
-        //
+        return view('admin.categories.show', [
+            'category' => $category->load('recursives'),
+        ]);
     }
 
     /**

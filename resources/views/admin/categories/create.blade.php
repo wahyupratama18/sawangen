@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout :title="__('forms.categories.create.title')">
     <div class="p-8">
         
         <a href="{{ route('admin.categories.index') }}">

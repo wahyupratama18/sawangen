@@ -50,4 +50,24 @@ class Category extends Model
     {
         return $this->hasMany(Category::class);
     }
+
+    /**
+     * Get all of the recursives for the Category
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function recursives(): HasMany
+    {
+        return $this->categories()->with('recursives');
+    }
+
+    /**
+     * Get all of the descriptions for the Category
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function descriptions(): HasMany
+    {
+        return $this->hasMany(CategoryDescription::class);
+    }
 }

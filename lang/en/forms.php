@@ -22,6 +22,7 @@ return [
             'title' => 'Edit category',
             'description' => 'Edit current product category.',
         ],
+        'parent' => 'Parent Category',
     ],
     'name' => 'Name',
     'email' => 'Email',
@@ -30,6 +31,7 @@ return [
     'remember' => 'Remember me',
     'forgot' => 'Forgot your password?',
     'or' => 'Or',
+    'action' => 'Tindakan',
     'agreement' => [
         'text' => 'I agree to the :terms_of_service and :privacy_policy',
         'terms' => 'Terms of Service',

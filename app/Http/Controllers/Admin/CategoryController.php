@@ -74,7 +74,9 @@ class CategoryController extends Controller
     {
         return view('admin.categories.edit', [
             'category' => $category,
-            'categories' => Category::query()->get([
+            'categories' => Category::query()
+            ->whereNot('id', $category->id)
+            ->get([
                 'id',
                 'name',
             ]),
@@ -95,7 +97,7 @@ class CategoryController extends Controller
         return redirect()->route('admin.categories.index')
         ->with([
             'status' => true,
-            'message' => 'Data berhasil diperbarui.'
+            'message' => 'Data berhasil diperbarui.',
         ]);
     }
 
@@ -112,7 +114,7 @@ class CategoryController extends Controller
         return redirect()->route('admin.categories.index')
         ->with([
             'status' => true,
-            'message' => 'Data berhasil terhapus.'
+            'message' => 'Data berhasil terhapus.',
         ]);
     }
 }

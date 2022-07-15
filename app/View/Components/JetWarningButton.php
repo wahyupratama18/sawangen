@@ -5,7 +5,7 @@ namespace App\View\Components;
 use Illuminate\View\Component;
 use Illuminate\View\View;
 
-class JetInvertButton extends Component
+class JetWarningButton extends Component
 {
     /**
      * Create a new component instance.
@@ -24,6 +24,6 @@ class JetInvertButton extends Component
      */
     public function render(): View
     {
-        return view('vendor.jetstream.components.invert-button');
+        return view('vendor.jetstream.components.warning-button');
     }
 }

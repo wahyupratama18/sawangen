@@ -43,5 +43,8 @@ import TomSelect from 'tom-select';
 window.TomSelect = TomSelect;
 
 import { Grid, html } from 'gridjs';
+import LocaleGrid from './LocaleGrid';
+
 window.Grid = Grid;
 window.html = html;
+window.langID = LocaleGrid;

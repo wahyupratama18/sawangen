@@ -18,7 +18,13 @@ class CategoryResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'parent' => $this->relationLoaded('category') ? $this->category?->name : null,
-            'show' => route('admin.categories.show', $this->id),
+            'actions' => view('components.show', [
+                'route' => route('admin.categories.show', $this->id),
+            ]).view('components.edit', [
+                'route' => route('admin.categories.edit', $this->id),
+            ]).view('components.destroy', [
+                'route' => route('admin.categories.destroy', $this->id),
+            ]),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

@@ -23,8 +23,8 @@
                 </div>
                 
                 <div class="col-span-6 sm:col-span-4">
-                    <x-jet-label for="category_id" value="{{ __('Subkategori') }}" />
-                    <x-select id="category_id" class="mt-1 block w-full" name="category_id" placeholder="Pilih kategori (opsional)">
+                    <x-jet-label for="category_id" value="{{ __('forms.categories.parent') }}" />
+                    <x-select id="category_id" class="mt-1 block w-full" name="category_id" placeholder="Pilih kategori (opsional)" title="Pilih subkategori">
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}" @selected( old('category_id') === $category->id )>{{ $category->name }}</option>
                         @endforeach

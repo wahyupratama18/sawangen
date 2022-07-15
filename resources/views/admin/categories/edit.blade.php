@@ -6,13 +6,13 @@
             {{ __('basic.back') }}
         </a>
 
-        <x-jet-normal-form :method="'POST'" :action="route('admin.categories.store')" class="mt-3">
+        <x-jet-normal-form method="PUT" :action="route('admin.categories.update', $category)" class="mt-3">
             <x-slot:title>
-                {{ __('forms.categories.create.title') }}
+                {{ __('forms.categories.edit.title') }}
             </x-slot>
         
             <x-slot:description>
-                {{ __('forms.categories.create.description') }}
+                {{ __('forms.categories.edit.description') }}
             </x-slot>
         
             <x-slot:form>
@@ -23,10 +23,17 @@
                 </div>
                 
                 <div class="col-span-6 sm:col-span-4">
-                    <x-jet-label for="category_id" value="{{ __('Subkategori') }}" />
-                    <x-select id="category_id" class="mt-1 block w-full" name="category_id" placeholder="Pilih kategori (opsional)">
-                        @foreach ($categories as $category)
-                            <option value="{{ $category->id }}" @selected( old('category_id', $category->category_id) === $category->id )>{{ $category->name }}</option>
+                    <x-jet-label for="category_id" value="{{ __('forms.categories.parent') }}" />
+                    <x-select
+                    id="category_id"
+                    class="mt-1 block w-full"
+                    name="category_id"
+                    placeholder="Pilih kategori (opsional)"
+                    title="Pilih subkategori"
+                    :options="['items' => $category->category_id]"
+                    >
+                        @foreach ($categories as $sub)
+                            <option value="{{ $sub->id }}" @selected( old('category_id', $category->category_id) === $sub->id )>{{ $sub->name }}</option>
                         @endforeach
                     </x-select>
                     <x-jet-input-error for="category_id" class="mt-2" />

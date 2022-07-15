@@ -22,6 +22,7 @@ return [
             'title' => 'Ubah kategori',
             'description' => 'Ganti kategori produk.',
         ],
+        'parent' => 'Induk Kategori',
     ],
     'name' => 'Nama',
     'email' => 'Email',
@@ -30,6 +31,7 @@ return [
     'remember' => 'Ingat saya',
     'forgot' => 'Lupa kata sandi anda?',
     'or' => 'Atau',
+    'action' => 'Tindakan',
     'agreement' => [
         'text' => 'Saya menyetujui :terms_of_service dan :privacy_policy yang ditetapkan',
         'terms' => 'Ketentuan Penggunaan',

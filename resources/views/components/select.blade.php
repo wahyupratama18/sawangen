@@ -1,7 +1,8 @@
 @php
     $options = array_merge([
         'allowEmptyOption' => true,
-	    'create' => true
+	    // 'create' => true
+        'items' => [],
     ], ($attributes['options'] ?: []))
 @endphp
 

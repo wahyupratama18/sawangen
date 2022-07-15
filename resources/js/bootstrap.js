@@ -42,5 +42,6 @@ window.iziToast = iziToast;
 import TomSelect from 'tom-select';
 window.TomSelect = TomSelect;
 
-import { Grid } from 'gridjs';
+import { Grid, html } from 'gridjs';
 window.Grid = Grid;
+window.html = html;
